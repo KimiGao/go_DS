@@ -1,4 +1,4 @@
-package main
+package ds
 
 import (
 	"fmt"
@@ -9,12 +9,12 @@ type MyList struct {
 	next *MyList
 }
 
-func (list *MyList) add(l MyList) {
+func (list *MyList) Add(l MyList) {
 	l.next = list.next
 	list.next = &l
 }
 
-func (list *MyList) append(l MyList) {
+func (list *MyList) Append(l MyList) {
 	for {
 		if list.next == nil {
 			list.next = &l
@@ -25,7 +25,7 @@ func (list *MyList) append(l MyList) {
 	}
 }
 
-func (list *MyList) show() {
+func (list *MyList) Show() {
 	for list.next != nil {
 		fmt.Println(list.data)
 
@@ -33,13 +33,12 @@ func (list *MyList) show() {
 	}
 }
 
-func main() {
-	myList := MyList{data: "1"}
-	myList.append(MyList{data: "2"})
-	myList.append(MyList{data: "3"})
-	myList.append(MyList{data: "4"})
-	myList.append(MyList{data: "5"})
-	myList.append(MyList{data: "6"})
+func (list *MyList) Length() int {
+	length := 0
 
-	myList.show()
+	for list.next != nil {
+		length++
+	}
+
+	return length
 }

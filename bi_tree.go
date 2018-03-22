@@ -1,4 +1,4 @@
-package main
+package ds
 
 import "fmt"
 
@@ -8,6 +8,9 @@ type BiTree struct {
 	right *BiTree
 }
 
+// 添加节点
+// @param [*BiTree] 需要添加的节点
+// @return [BiTree] 返回添加的节点
 func (tree *BiTree) add(t BiTree) {
 	if tree.data > t.data {
 		if tree.left == nil {
@@ -35,21 +38,4 @@ func (tree *BiTree) travel() {
 	if tree.right != nil {
 		tree.right.travel()
 	}
-}
-
-func main() {
-	tree := BiTree{data: 13}
-
-	tree.add(BiTree{data: 4})
-	tree.add(BiTree{data: 2})
-	tree.add(BiTree{data: 14})
-	tree.add(BiTree{data: 1})
-	tree.add(BiTree{data: 9})
-	tree.add(BiTree{data: 21})
-	tree.add(BiTree{data: 11})
-	tree.add(BiTree{data: 8})
-	tree.add(BiTree{data: 7})
-	tree.add(BiTree{data: 24})
-
-	tree.travel()
 }

@@ -1,6 +1,6 @@
 // 循环队列的实现
 
-package main
+package ds
 
 import (
 	"fmt"
@@ -14,20 +14,20 @@ type LoopQueue struct {
 	rear      int
 }
 
-func (q *LoopQueue) isEmpty() bool {
+func (q *LoopQueue) IsEmpty() bool {
 	return q.front == q.rear
 }
 
-func (q *LoopQueue) isFull() bool {
+func (q *LoopQueue) IsFull() bool {
 	return ((q.rear + 1) % MAXSIZE) == q.front
 }
 
-func (q *LoopQueue) length() int {
+func (q *LoopQueue) Length() int {
 	return (q.rear - q.front + MAXSIZE) % MAXSIZE
 }
 
-func (q *LoopQueue) insert(data int) int {
-	if q.isFull() {
+func (q *LoopQueue) Insert(data int) int {
+	if q.IsFull() {
 		return -1
 	}
 
@@ -37,8 +37,8 @@ func (q *LoopQueue) insert(data int) int {
 	return q.rear
 }
 
-func (q *LoopQueue) remove() int {
-	if q.isEmpty() {
+func (q *LoopQueue) Remove() int {
+	if q.IsEmpty() {
 		return -1
 	}
 
@@ -48,33 +48,6 @@ func (q *LoopQueue) remove() int {
 	return q.front
 }
 
-func (q *LoopQueue) printInfo() {
-	fmt.Printf("queue: %v\nlength: %v\nfront: %v\nrear: %v\n\n", q.dataArray, q.length(), q.front, q.rear)
-}
-
-func main() {
-	queue := new(LoopQueue)
-
-	queue.insert(1)
-	queue.insert(2)
-	queue.insert(3)
-	queue.insert(4)
-	queue.insert(5)
-	queue.insert(6)
-	queue.insert(7)
-	queue.printInfo()
-
-	queue.remove()
-	queue.remove()
-	queue.printInfo()
-
-	queue.insert(8)
-	queue.insert(9)
-	queue.insert(10)
-	queue.insert(11)
-	queue.insert(12)
-	queue.insert(13)
-	queue.insert(14)
-	queue.printInfo()
-
+func (q *LoopQueue) PrintInfo() {
+	fmt.Printf("queue: %v\nlength: %v\nfront: %v\nrear: %v\n\n", q.dataArray, q.Length(), q.front, q.rear)
 }
