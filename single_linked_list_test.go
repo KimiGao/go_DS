@@ -10,6 +10,6 @@ func TestAdd(t *testing.T) {
 	list.Add(MyList{data: "3"})
 
 	if list.Length() != 3 {
-		t.Errorf("list.Length() == %t, want %t", list.Length(), 3)
+		t.Errorf("list.Length() == %v, want %v", list.Length(), 3)
 	}
 }

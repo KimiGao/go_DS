@@ -34,10 +34,12 @@ func (list *MyList) Show() {
 }
 
 func (list *MyList) Length() int {
-	length := 0
+	length := 1
 
 	for list.next != nil {
 		length++
+
+		list = list.next
 	}
 
 	return length
